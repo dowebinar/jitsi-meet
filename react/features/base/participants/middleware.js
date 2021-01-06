@@ -32,6 +32,7 @@ import {
     setLoadableAvatarUrl
 } from './actions';
 import {
+    LOBBY_SOUND_ID,
     LOCAL_PARTICIPANT_DEFAULT_ID,
     PARTICIPANT_JOINED_SOUND_ID,
     PARTICIPANT_LEFT_SOUND_ID
@@ -43,7 +44,7 @@ import {
     getParticipantCount,
     getParticipantDisplayName
 } from './functions';
-import { PARTICIPANT_JOINED_FILE, PARTICIPANT_LEFT_FILE } from './sounds';
+import { PARTICIPANT_JOINED_FILE, PARTICIPANT_LEFT_FILE, LOBBY_ENTRANCE_FILE } from './sounds';
 
 declare var APP: Object;
 
@@ -466,6 +467,8 @@ function _raiseHandUpdated({ dispatch, getState }, conference, participantId, ne
 function _registerSounds({ dispatch }) {
     dispatch(
         registerSound(PARTICIPANT_JOINED_SOUND_ID, PARTICIPANT_JOINED_FILE));
+    dispatch(
+       registerSound(LOBBY_SOUND_ID, LOBBY_ENTRANCE_FILE));
     dispatch(registerSound(PARTICIPANT_LEFT_SOUND_ID, PARTICIPANT_LEFT_FILE));
 }
 

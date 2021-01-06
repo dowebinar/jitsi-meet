@@ -2,7 +2,7 @@
 
 import { CONFERENCE_FAILED, CONFERENCE_JOINED } from '../base/conference';
 import { JitsiConferenceErrors, JitsiConferenceEvents } from '../base/lib-jitsi-meet';
-import { getFirstLoadableAvatarUrl, getParticipantDisplayName } from '../base/participants';
+import { getFirstLoadableAvatarUrl, getParticipantDisplayName, LOBBY_SOUND_ID } from '../base/participants';
 import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
 import { isTestModeEnabled } from '../base/testing';
 import { NOTIFICATION_TYPE, showNotification } from '../notifications';
@@ -18,6 +18,7 @@ import {
     startKnocking,
     setPasswordJoinFailed
 } from './actions';
+import { playSound } from '../base/sounds';
 
 MiddlewareRegistry.register(store => next => action => {
     switch (action.type) {
@@ -146,6 +147,7 @@ function _conferenceJoined({ dispatch }, next, action) {
  */
 function _findLoadableAvatarForKnockingParticipant(store, { id }) {
     const { dispatch, getState } = store;
+    dispatch(playSound(LOBBY_SOUND_ID));
     const updatedParticipant = getState()['features/lobby'].knockingParticipants.find(p => p.id === id);
     const { disableThirdPartyRequests } = getState()['features/base/config'];
 

@@ -50,6 +50,7 @@ export const MAX_DISPLAY_NAME_LENGTH = 50;
  * @type {string}
  */
 export const PARTICIPANT_JOINED_SOUND_ID = 'PARTICIPANT_JOINED_SOUND';
+export const LOBBY_SOUND_ID = 'LOBBY_SOUND';
 
 /**
  * The identifier of the sound to be played when remote participant leaves
