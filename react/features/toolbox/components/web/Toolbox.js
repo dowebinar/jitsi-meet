@@ -1336,7 +1336,7 @@ class Toolbox extends Component<Props, State> {
                     <MuteEveryoneButton
                         key = 'mute-everyone'
                         showLabel = { false }
-                        visible = { this._shouldShowButton('mute-everyone') } />,
+                        visible = { this._shouldShowButton('mute-everyone') } />
                     {
                         buttonsLeft.indexOf('closedcaptions') !== -1
                         && <ClosedCaptionButton />
